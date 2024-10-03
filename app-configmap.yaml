@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: demo
+data:
+  index.html: |
+    <html>
+    <body>
+      <h1>User List</h1>
+      <ul>
+        {{ user_list }}
+      </ul>
+    </body>
+    </html>
+  form.html: |
+    <html>
+    <body>
+      <h1>Add User</h1>
+      <form action="/add" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Add User</button>
+      </form>
+    </body>
+    </html>

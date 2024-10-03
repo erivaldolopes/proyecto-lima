@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+  namespace: demo
+data:
+  init.sql: |
+    CREATE DATABASE example_db;
+    USE example_db;
+    CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id));
+    INSERT INTO users (name) VALUES ('Alice'), ('Bob');
