@@ -15,7 +15,7 @@ Este repositório contém uma aplicação Kubernetes simples com um banco de dad
 1. Crie o namespace:
 
    ```
-   kubectl create namespace demo
+   kubectl apply -f manifests/namespace.yaml
    ```
 
 2. Aplique o Secret para credenciais do MySQL:
