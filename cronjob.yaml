@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: upgrade-cronjob
+  namespace: kube-system
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          tolerations:
+          - operator: "Exists"
+          serviceAccountName: upgrade-sa
+          containers:
+          - name: upgrade
+            image: erivaldolopes/ubuntu-kubectl:v1
+            imagePullPolicy: Always
+            securityContext:
+              privileged: true
+          restartPolicy: OnFailure
+          hostNetwork: true
+          hostPID: true
+          dnsPolicy: ClusterFirstWithHostNet
